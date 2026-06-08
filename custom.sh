@@ -1,5 +1,6 @@
 readonly LD_PRELOAD
 readonly LD_LIBRARY_PATH
+alias htop="htop --drop-capabilities=strict"
 alias ls="ls -lhaZ"
 alias ps="ps -Z"
 clear;fastfetch -l Aperture  --pipe false
