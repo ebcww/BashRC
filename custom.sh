@@ -673,7 +673,411 @@ __git_ps1 ()
 
 
 
+readonly DO_NOT_TRACK=1
+# do_not_track.env
+# A comprehensive collection of environment variables that opt out of telemetry,
+# analytics, and data collection in CLI tools, frameworks, and SDKs.
+#
+# Usage:
+#   Shell (bash/zsh):   set -a && source do_not_track.env && set +a
+#   direnv:             copy contents into .envrc
+#   Docker Compose:     env_file: do_not_track.env
+#   CI/CD:              export vars in your pipeline environment
+#
+# Source: https://github.com/alloydwhitlock/do-not-track-cli
+# Contributing: see README.md
 
+# ──────────────────────────────────────────────
+# Universal / Cross-tool Standard
+# ──────────────────────────────────────────────
+# Many modern tools check DO_NOT_TRACK=1 before sending telemetry.
+# Setting this is a good baseline even for tools not listed below.
+# See: https://donottrack.sh
+
+# ──────────────────────────────────────────────
+# JavaScript / TypeScript Frameworks
+# ──────────────────────────────────────────────
+
+# Angular CLI
+readonly NG_CLI_ANALYTICS=false
+readonly NG_CLI_ANALYTICS_SHARE=false
+
+# Astro
+readonly ASTRO_TELEMETRY_DISABLED=1
+
+# Gatsby
+readonly GATSBY_TELEMETRY_DISABLED=1
+
+# Next.js
+readonly NEXT_TELEMETRY_DISABLED=1
+
+# Nuxt.js
+readonly NUXT_TELEMETRY_DISABLED=1
+
+# Strapi
+readonly STRAPI_TELEMETRY_DISABLED=true
+readonly STRAPI_DISABLE_UPDATE_NOTIFICATION=true
+
+# Turborepo
+readonly TURBO_TELEMETRY_DISABLED=1
+
+# VueDX
+readonly VUEDX_TELEMETRY=off
+
+# webhint
+readonly HINT_TELEMETRY=off
+
+# Webiny
+readonly REACT_APP_WEBINY_TELEMETRY=false
+
+# SKU (Seek's build toolchain)
+readonly SKU_TELEMETRY=false
+
+# Cube.js
+readonly CUBEJS_TELEMETRY=false
+
+# ──────────────────────────────────────────────
+# Package Managers & Dependency Tools
+# ──────────────────────────────────────────────
+
+# Homebrew (macOS/Linux)
+readonly HOMEBREW_NO_ANALYTICS=1
+readonly HOMEBREW_NO_ANALYTICS_THIS_RUN=1
+
+# Yarn 2+
+readonly YARN_ENABLE_TELEMETRY=0
+
+# ──────────────────────────────────────────────
+# Language Runtimes & Build Tools
+# ──────────────────────────────────────────────
+
+# .NET Core SDK
+readonly DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# .NET Interactive
+readonly DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=1
+
+# dotnet-svcutil
+readonly DOTNET_SVCUTIL_TELEMETRY_OPTOUT=1
+
+# Go (golang.org/x/telemetry, added in Go 1.23)
+readonly GOTELEMETRY=off
+
+# ML.NET CLI
+readonly MLDOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# mssql-cli
+readonly MSSQL_CLI_TELEMETRY_OPTOUT=1
+
+# PowerShell Core
+readonly POWERSHELL_TELEMETRY_OPTOUT=1
+
+# Bun (also respects DO_NOT_TRACK=1 above)
+# BUN_DISABLE_TELEMETRY=1  # future; currently DO_NOT_TRACK=1 is sufficient
+
+# choosenim (Nim version manager)
+readonly CHOOSENIM_NO_ANALYTICS=1
+
+# Nuke (build system for .NET)
+readonly NUKE_TELEMETRY_OPTOUT=1
+
+# ──────────────────────────────────────────────
+# Infrastructure as Code
+# ──────────────────────────────────────────────
+
+# Terraform / OpenTofu / Packer / Vault / Consul / Weave Net / WKSctl / CDK for Terraform
+# CHECKPOINT_DISABLE is a HashiCorp-wide convention used by multiple tools.
+readonly CHECKPOINT_DISABLE=1
+
+# Terraform Provider for Azure
+readonly ARM_DISABLE_TERRAFORM_PARTNER_ID=true
+
+# F5 BIG-IP Terraform provider
+readonly TEEM_DISABLE=true
+
+# Pulumi
+readonly PULUMI_SKIP_UPDATE_CHECK=true
+
+# Earthly
+readonly EARTHLY_DISABLE_ANALYTICS=1
+
+# Batect
+readonly BATECT_ENABLE_TELEMETRY=false
+
+# Pants (Python build system)
+readonly PANTS_ANONYMOUS_TELEMETRY_ENABLED=false
+
+# werf
+readonly WERF_TELEMETRY=0
+
+# AWS CDK
+readonly CDK_DISABLE_CLI_TELEMETRY=true
+
+# ──────────────────────────────────────────────
+# Cloud Provider CLIs
+# ──────────────────────────────────────────────
+
+# Google Cloud SDK (gcloud)
+readonly CLOUDSDK_CORE_DISABLE_USAGE_REPORTING=true
+
+# Azure CLI
+readonly AZURE_CORE_COLLECT_TELEMETRY=0
+
+# AWS SAM CLI
+readonly SAM_CLI_TELEMETRY=0
+
+# Salesforce CLI (sf / sfdx)
+readonly SF_DISABLE_TELEMETRY=true
+readonly SFDX_DISABLE_TELEMETRY=true
+
+# GitHub CLI (gh) — added in v2.91.0, April 2026
+readonly GH_TELEMETRY=false
+
+# Supabase CLI (also respects DO_NOT_TRACK=1 above)
+readonly SUPABASE_TELEMETRY_DISABLED=1
+
+# Vercel CLI
+readonly VERCEL_TELEMETRY_DISABLED=1
+
+# Railway (also respects DO_NOT_TRACK=1 above)
+readonly RAILWAY_NO_TELEMETRY=1
+
+# Cloudflare Wrangler
+readonly WRANGLER_SEND_METRICS=false
+
+# ──────────────────────────────────────────────
+# Databases & Data Platforms
+# ──────────────────────────────────────────────
+
+# InfluxDB
+readonly INFLUXD_REPORTING_DISABLED=true
+
+# MeiliSearch
+readonly MEILI_NO_ANALYTICS=true
+
+# NocoDB
+readonly NC_DISABLE_TELE=1
+
+# Hasura GraphQL Engine
+readonly HASURA_GRAPHQL_ENABLE_TELEMETRY=false
+ 
+# Meltano
+readonly MELTANO_DISABLE_TRACKING=true
+
+# Prisma (uses CHECKPOINT_DISABLE — already set above)
+
+# Quickwit
+readonly DISABLE_QUICKWIT_TELEMETRY=1
+
+# ──────────────────────────────────────────────
+# API Clients & SDKs
+# ──────────────────────────────────────────────
+
+# Expo / React Native
+readonly EXPO_NO_TELEMETRY=1
+
+# Fastlane
+readonly FASTLANE_OPT_OUT_USAGE=YES
+
+# Feast (feature store)
+readonly FEAST_TELEMETRY=false
+
+# Mattermost Server
+readonly MM_LOGSETTINGS_ENABLEDIAGNOSTICS=false
+readonly MM_SERVICESETTINGS_ENABLESECURITYFIXALERT=false
+
+# Canvas LMS
+readonly CANVAS_LMS_STATS_COLLECTION=opt_out
+
+# otel-launcher-node (Lightstep host metrics)
+readonly LS_METRICS_HOST_ENABLED=0
+
+# One Codex
+readonly ONE_CODEX_NO_TELEMETRY=true
+
+# Ory
+readonly SQA_OPT_OUT=true
+
+# Oryx (Microsoft build tool)
+readonly ORYX_DISABLE_TELEMETRY=true
+
+# PROSE Code Accelerator SDK (Microsoft Research)
+readonly PROSE_TELEMETRY_OPTOUT=1
+
+# RASA (conversational AI)
+readonly RASA_TELEMETRY_ENABLED=false
+
+# Quilt (data versioning)
+readonly QUILT_DISABLE_USAGE_METRICS=true
+
+# ReportPortal
+readonly REPORTPORTAL_CLIENT_JS_NO_ANALYTICS=true
+readonly AGENT_NO_ANALYTICS=1
+
+# RESTler (REST API fuzzer)
+readonly RESTLER_TELEMETRY_OPTOUT=1
+
+# Rockset CLI
+readonly ROCKSET_CLI_TELEMETRY_OPTOUT=1
+
+# Rover CLI (Apollo GraphQL)
+readonly APOLLO_TELEMETRY_DISABLED=1
+
+# Salto CLI
+readonly SALTO_TELEMETRY_DISABLE=1
+
+# Redocly CLI
+readonly REDOCLY_TELEMETRY=off
+
+# Encore
+readonly DISABLE_ENCORE_TELEMETRY=1
+
+# Stripe CLI
+readonly STRIPE_CLI_TELEMETRY_OPTOUT=1
+
+# ──────────────────────────────────────────────
+# Serverless & FaaS
+# ──────────────────────────────────────────────
+
+# Serverless Framework
+readonly SLS_TELEMETRY_DISABLED=1
+readonly SLS_TRACKING_DISABLED=1
+
+# ──────────────────────────────────────────────
+# DevOps & Platform Tools
+# ──────────────────────────────────────────────
+
+# App Center CLI
+readonly MOBILE_CENTER_TELEMETRY=off
+
+# Arduino CLI
+readonly ARDUINO_METRICS_ENABLED=false
+
+# Appc Daemon (Titanium)
+readonly APPCD_TELEMETRY=0
+
+# Bot Framework CLI
+readonly BF_CLI_TELEMETRY=false
+
+# Chef Workstation
+readonly CHEF_TELEMETRY_OPT_OUT=1
+
+# CocoaPods
+readonly COCOAPODS_DISABLE_STATS=true
+
+# Dagster
+readonly DAGSTER_DISABLE_TELEMETRY=1
+
+# decK (Kong declarative config)
+readonly DECK_ANALYTICS=off
+
+# Eternal Terminal
+readonly ET_NO_TELEMETRY=1
+
+# F5 CLI
+readonly F5_ALLOW_TELEMETRY=false
+
+# Gemini CLI
+readonly GEMINI_TELEMETRY_ENABLED=false
+
+# Hugging Face Hub (python transformers / diffusers / datasets)
+readonly HF_HUB_DISABLE_TELEMETRY=1
+
+# Hookdeck CLI
+readonly HOOKDECK_CLI_TELEMETRY_OPTOUT=1
+
+# Humbug (Python library used by several tools)
+readonly BUGGER_OFF=1
+
+# Infracost
+readonly INFRACOST_SELF_HOSTED_TELEMETRY=false
+
+# KICS (security scanner)
+readonly KICS_COLLECT_TELEMETRY=0
+readonly DISABLE_CRASH_REPORT=1
+
+# kPow (Kafka UI)
+readonly ALLOW_UI_ANALYTICS=false
+
+# LYNX VFX
+readonly LYNX_ANALYTICS=0
+
+# MSLab
+readonly MSLAB_TELEMETRY_LEVEL=None
+
+# Netdata (also respects DO_NOT_TRACK=1 above)
+# DO_NOT_TRACK is already set above
+
+# PnP PowerShell
+readonly PNPPOWERSHELL_DISABLETELEMETRY=true
+
+# Telepresence (CNCF)
+readonly SCOUT_DISABLE=1
+
+# Tilt (k8s dev tool; also respects DO_NOT_TRACK=1)
+# DO_NOT_TRACK is already set above
+
+# Tuist
+readonly TUIST_STATS_OPT_OUT=1
+
+# Vagrant
+readonly VAGRANT_CHECKPOINT_DISABLE=1
+readonly VAGRANT_BOX_UPDATE_CHECK_DISABLE=1
+
+# vstest
+readonly VSTEST_TELEMETRY_OPTEDIN=0
+
+# AutomatedLab
+readonly AUTOMATEDLAB_TELEMETRY_OPTIN=0
+readonly AUTOMATEDLAB_TELEMETRY_OPTOUT=1
+
+# Dagger (also respects DO_NOT_TRACK=1)
+# DO_NOT_TRACK is already set above
+
+# aliBuild (ALICE/CERN)
+readonly ALIBUILD_NO_ANALYTICS=1
+
+# kubeapt (Kubernetes dashboard)
+readonly DASH_DISABLE_TELEMETRY=1
+
+# Testim Root Cause (failure analysis)
+readonly SUGGESTIONS_OPT_OUT=1
+
+# Carbon Design System
+readonly CARBON_TELEMETRY_DISABLED=1
+
+# Automagica
+readonly AUTOMAGICA_NO_TELEMETRY=1
+
+# JavaScript debugger (VSCode)
+readonly DA_TEST_DISABLE_TELEMETRY=1
+
+# Azure Application Insights VSCode extension
+readonly AITOOLSVSCODE_DISABLETELEMETRY=1
+
+# ──────────────────────────────────────────────
+# Aggressive / Opt-in
+# ──────────────────────────────────────────────
+# These variables go beyond disabling telemetry. They block network access,
+# suppress system notifications, or use generic names likely to collide with
+# other tools in your environment. They are commented out by default.
+#
+# Uncomment only the ones you want, and verify they don't break other tools.
+
+# Hugging Face Hub — blocks ALL outbound connections to hf.co.
+# This prevents model and dataset downloads, not just usage reporting.
+# Only set this in fully offline or air-gapped environments.
+readonly HF_HUB_OFFLINE=1
+
+# AccessMap — disables analytics for the AccessMap routing tool, but the
+# variable name ANALYTICS is generic enough to interfere with other tools
+# that check $ANALYTICS in their own startup logic.
+readonly ANALYTICS=no
+
+# projector-cli — disables telemetry for JetBrains projector-cli, but
+# TELEMETRY_ENABLED is a common pattern used by many tools. Setting this
+# globally may silently affect other tools in your environment.
+readonly TELEMETRY_ENABLED=0
 readonly LD_PRELOAD
 readonly LD_LIBRARY_PATH
 alias htop="htop --drop-capabilities=strict"
