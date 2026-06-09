@@ -1080,8 +1080,8 @@ readonly ANALYTICS=no
 readonly TELEMETRY_ENABLED=0
 readonly EDITOR=/usr/bin/vim
 readonly GIT_SSH_COMMAND="ssh -C -I /usr/lib64/opensc-pkcs11.so"
-readonly LD_PRELOAD
-readonly LD_LIBRARY_PATH
+readonly LD_PRELOAD=""
+readonly LD_LIBRARY_PATH=""
 alias htop="htop --drop-capabilities=strict"
 alias ls="ls --color=auto -lhaZ"
 alias ps="ps -Z"
