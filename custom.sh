@@ -1078,6 +1078,8 @@ readonly ANALYTICS=no
 # TELEMETRY_ENABLED is a common pattern used by many tools. Setting this
 # globally may silently affect other tools in your environment.
 readonly TELEMETRY_ENABLED=0
+readonly EDITOR=/usr/bin/vim
+readonly GIT_SSH_COMMAND="ssh -C -I /usr/lib64/opensc-pkcs11.so"
 readonly LD_PRELOAD
 readonly LD_LIBRARY_PATH
 alias htop="htop --drop-capabilities=strict"
